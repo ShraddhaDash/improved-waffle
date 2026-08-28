@@ -1,28 +1,37 @@
+import { NavLink, Route, Routes } from 'react-router-dom'
 import './App.css'
+import Activities from './components/Activities.jsx'
+import Leaderboard from './components/Leaderboard.jsx'
+import Teams from './components/Teams.jsx'
+import Users from './components/Users.jsx'
+import Workouts from './components/Workouts.jsx'
 
 function App() {
   return (
     <main className="octofit-shell">
-      <section className="container py-5">
-        <div className="row justify-content-center">
-          <div className="col-lg-8 text-center">
-            <span className="eyebrow">Fitness Tracking</span>
-            <h1 className="display-4 fw-bold mt-3">OctoFit Tracker</h1>
-            <p className="lead mt-3 text-muted">
-              Track activity, manage teams, and celebrate progress with a simple,
-              focused training dashboard.
-            </p>
-            <div className="d-flex justify-content-center gap-3 mt-4 flex-wrap">
-              <button type="button" className="btn btn-primary btn-lg">
-                View activities
-              </button>
-              <button type="button" className="btn btn-outline-primary btn-lg">
-                Leaderboard
-              </button>
+      <div className="container py-4">
+        <nav className="navbar navbar-expand-lg navbar-light bg-white rounded shadow-sm mb-4 border">
+          <div className="container-fluid">
+            <span className="navbar-brand fw-bold text-primary">OctoFit Tracker</span>
+            <div className="navbar-nav flex-row flex-wrap gap-3 ms-auto">
+              <NavLink className="nav-link" to="/users">Users</NavLink>
+              <NavLink className="nav-link" to="/teams">Teams</NavLink>
+              <NavLink className="nav-link" to="/activities">Activities</NavLink>
+              <NavLink className="nav-link" to="/workouts">Workouts</NavLink>
+              <NavLink className="nav-link" to="/leaderboard">Leaderboard</NavLink>
             </div>
           </div>
-        </div>
-      </section>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Users />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/teams" element={<Teams />} />
+          <Route path="/activities" element={<Activities />} />
+          <Route path="/workouts" element={<Workouts />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+        </Routes>
+      </div>
     </main>
   )
 }
