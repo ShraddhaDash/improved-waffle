@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 
-const API_BASE = (() => {
-  const codespaceName = import.meta.env.VITE_CODESPACE_NAME;
-  return codespaceName ? `https://${codespaceName}-8000.app.github.dev` : 'http://localhost:8000';
-})();
+const API_BASE = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev`
+  : 'http://localhost:8000';
 
 function Teams() {
   const [teams, setTeams] = useState([]);
